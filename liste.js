@@ -11,7 +11,7 @@ function chargerLesToaches() {
     console.log("🔄 Chargement des tâches...");
     
     // On utilise Fetch pour récupérer les données
-    fetch('http://localhost:3000/todos')
+    fetch('https://projet-js-neon.vercel.app/todos')
         .then(response => response.json()) // Convertit la réponse en JSON
         .then(data => {
             console.log("✅ Tâches reçues :", data);
@@ -144,7 +144,7 @@ btnAjouter.addEventListener('click', function() {
     };
     
     // On envoie les données à l'API (POST)
-    fetch('http://localhost:3000/todos', {
+    fetch('https://projet-js-neon.vercel.app/todos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

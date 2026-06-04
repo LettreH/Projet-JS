@@ -7,7 +7,7 @@ function chargerStatistiques() {
     console.log("📊 Chargement des statistiques...");
     
     // On récupère toutes les tâches depuis l'API
-    fetch('http://localhost:3000/todos')
+    fetch('https://projet-js-neon.vercel.app/todos')
         .then(response => response.json())
         .then(data => {
             

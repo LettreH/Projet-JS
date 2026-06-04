@@ -9,7 +9,7 @@ function afficherDetailsComplete() {
     console.log("📋 Affichage des détails pour la tâche ID:", idTache);
     
     // ✅ On récupère les tâches de la liste.html (cache)
-    fetch('http://localhost:3000/todos')
+    fetch('https://projet-js-neon.vercel.app/todos')
         .then(response => response.json())
         .then(data => {
             const taches = data[0].todolist;
@@ -74,7 +74,7 @@ function terminerTache(idTache) {
     console.log("✅ Marquer comme terminé la tâche :", idTache);
     
     // On envoie une demande PUT à l'API pour mettre à jour
-    fetch(`http://localhost:3000/todos/${idTache}`, {
+    fetch(`https://projet-js-neon.vercel.app/todos/${idTache}`, {
         method: 'PUT',  // Ou PATCH selon l'API
         headers: {
             'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ function rouvrirTache(idTache) {
     console.log("🔓 Réouvrir la tâche :", idTache);
     
     // On envoie une demande PUT pour la réouvrir
-    fetch(`http://localhost:3000/todos/${idTache}`, {
+    fetch(`https://projet-js-neon.vercel.app/todos/${idTache}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -139,7 +139,7 @@ function supprimerTache(idTache) {
     console.log("🗑️ Suppression de la tâche :", idTache);
     
     // On envoie une demande DELETE à l'API
-    fetch(`http://localhost:3000/todos/${idTache}`, {
+    fetch(`https://projet-js-neon.vercel.app/todos/${idTache}`, {
         method: 'DELETE'
     })
     .then(response => {
