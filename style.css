@@ -1,0 +1,530 @@
+/* RESET ET BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==================== PAGE DE CONNEXION ==================== */
+
+.page-connexion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-connexion {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 380px;
+}
+
+.form-connexion h1 {
+    margin-bottom: 25px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.form-connexion label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    width: 100%;
+}
+
+.form-connexion input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-connexion input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form-connexion button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.form-connexion button:hover {
+    background-color: #0056b3;
+}
+
+#message-erreur {
+    margin-bottom: 20px;
+    min-height: 20px;
+}
+
+/* ==================== PAGE DES TÂCHES ==================== */
+
+/* BARRE DE NAVIGATION */
+.main-header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.title-taches {
+    margin: 0;
+    color: #1a1a1a;
+    font-size: 24px;
+}
+
+.btn-deconnexion {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-deconnexion:hover {
+    background-color: #c82333;
+}
+
+/* CONTENU PRINCIPAL */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* SECTION POUR AJOUTER UNE TÂCHE */
+.add-task-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.add-task-section input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.add-task-section input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.add-task-section button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.add-task-section button:hover {
+    background-color: #218838;
+}
+
+/* LA GRILLE DES TÂCHES */
+#task-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #task-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #task-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .title-taches {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* LA CARTE DE TÂCHE */
+.task-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Alignement des infos */
+.task-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.task-text-group {
+    flex: 1;
+}
+
+.task-title {
+    display: block;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 15px;
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: #636e72;
+}
+
+/* Bouton et badge */
+.task-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid;
+}
+
+.badge.termine {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.badge.en-cours {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+.btn-detail {
+    background-color: #0984e3;
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-detail:hover {
+    background-color: #0056b3;
+}
+
+/* Classe pour cacher un élément */
+.hidden {
+    display: none;
+}
+
+/* PAGE DÉTAILS */
+.details-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.detail-header h2 {
+    margin: 0;
+    color: #1a1a1a;
+    flex: 1;
+}
+
+.detail-status {
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.detail-info p {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.detail-info strong {
+    color: #1a1a1a;
+}
+
+/* Badge pour "À FAIRE" */
+.badge.a-faire {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+/* PAGE DÉTAILS - AMÉLIORÉE */
+.details-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.detail-header h2 {
+    margin: 0;
+    color: #1a1a1a;
+    flex: 1;
+}
+
+.detail-status {
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.detail-info p {
+    margin: 15px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.detail-info strong {
+    color: #1a1a1a;
+}
+
+/* BOUTONS D'ACTION */
+.detail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-action {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-terminer {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-terminer:hover {
+    background-color: #218838;
+}
+
+.btn-reouv {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.btn-reouv:hover {
+    background-color: #ffb800;
+}
+
+.btn-supprimer {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-supprimer:hover {
+    background-color: #c82333;
+}
+
+/* PAGE STATISTIQUES */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h2 {
+    font-size: 48px;
+    margin: 0 0 10px 0;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #636e72;
+    font-size: 16px;
+}
+
+.stat-total h2 {
+    color: #0984e3;
+}
+
+.stat-termine h2 {
+    color: #27ae60;
+}
+
+.stat-afaire h2 {
+    color: #ffc107;
+}
+
+/* BARRE DE PROGRESSION */
+.progress-section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.progress-section h3 {
+    margin: 0 0 20px 0;
+    color: #1a1a1a;
+}
+
+.progress-bar {
+    background: #e1e1e1;
+    border-radius: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: #27ae60;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: width 0.5s;
+    min-width: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn-stats {
+    background-color: #6c5ce7;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background 0.3s;
+}
+
+.btn-stats:hover {
+    background-color: #5f3dc4;
+}

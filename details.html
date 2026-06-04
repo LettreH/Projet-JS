@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la tâche</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BARRE DE NAVIGATION -->
+    <header class="main-header">
+        <a href="liste.html" style="text-decoration: none; color: #1a1a1a; font-size: 18px;">← Retour</a>
+        <h1 class="title-taches">Détails de la tâche</h1>
+        <button class="btn-deconnexion" id="btn-quitter">Déconnexion</button>
+    </header>
+
+    <!-- CONTENU -->
+    <main>
+        <div id="details-container" class="details-card">
+            <p>Chargement...</p>
+        </div>
+    </main>
+
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById('btn-quitter').addEventListener('click', function() {
+            localStorage.clear(); 
+            window.location.href = "index.html";
+        });
+    </script>
+    <script src="details.js"></script>
+</body>
+</html>

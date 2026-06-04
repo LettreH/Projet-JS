@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BARRE DE NAVIGATION -->
+    <header class="main-header">
+        <a href="liste.html" style="text-decoration: none; color: #1a1a1a; font-size: 18px;">← Retour</a>
+        <h1 class="title-taches">Statistiques</h1>
+        <button class="btn-deconnexion" id="btn-quitter">Déconnexion</button>
+    </header>
+
+    <!-- CONTENU -->
+    <main>
+        <div class="stats-container">
+            <!-- Carte : Total -->
+            <div class="stat-card stat-total">
+                <h2 id="total">0</h2>
+                <p>Total des tâches</p>
+            </div>
+
+            <!-- Carte : Terminées -->
+            <div class="stat-card stat-termine">
+                <h2 id="terminees">0</h2>
+                <p>Tâches terminées</p>
+            </div>
+
+            <!-- Carte : À faire -->
+            <div class="stat-card stat-afaire">
+                <h2 id="afaire">0</h2>
+                <p>Tâches à faire</p>
+            </div>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="progress-section">
+            <h3>Progression</h3>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill">0%</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById('btn-quitter').addEventListener('click', function() {
+            localStorage.clear(); 
+            window.location.href = "index.html";
+        });
+    </script>
+    <script src="stats.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Liste de Tâches</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BARRE DE NAVIGATION EN HAUT -->
+    <header class="main-header">
+        <h1 class="title-taches">Mes tâches</h1>
+        <div>
+            <a href="stats.html" class="btn-stats">📊 Statistiques</a>
+            <button class="btn-deconnexion" id="btn-quitter">Déconnexion</button>
+        </div>
+    </header>
+
+    <!-- SECTION POUR AJOUTER UNE TÂCHE -->
+    <main>
+        <div class="add-task-section">
+            <input type="text" id="task-input" placeholder="Quelle est la tâche ?">
+            <button id="add-task-btn">Ajouter</button>
+        </div>
+
+        <!-- LA LISTE DES TÂCHES EN GRILLE -->
+        <ul id="task-list"></ul>
+    </main>
+
+    <!-- ÉVÉNEMENT DÉCONNEXION -->
+    <script>
+        document.getElementById('btn-quitter').addEventListener('click', function() {
+            localStorage.clear(); 
+            window.location.href = "index.html";
+        });
+    </script>
+
+    <script src="liste.js"></script>
+</body>
+</html>
