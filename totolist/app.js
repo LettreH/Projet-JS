@@ -338,6 +338,12 @@ app.delete('/todos/:id', (req, res) => {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-});
+// Pour le développement local (sur ton ordinateur)
+if (require.main === module) {
+    app.listen(3000, () => {
+        console.log('Server is running on http://localhost:3000');
+    });
+}
+
+// Pour Vercel (déploiement en ligne)
+module.exports = app;
